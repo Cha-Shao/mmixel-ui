@@ -9,10 +9,12 @@
     "example": "example"
   },
   "scripts": {
+    "done": "npm run build && npm run pub",
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pub": "npm publish"
   },
   "repository": {
     "type": "git",
@@ -44,5 +46,10 @@
     "classnames": "^2.3.2",
     "framer-motion": "^10.12.21",
     "tslib": "^2.6.0"
-  }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ]
 }
