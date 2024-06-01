@@ -1,14 +1,14 @@
 {
-  "name": "mmixel-ui",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@mmixel/mmixel-ui",
+  "version": "0.0.1",
+  "description": "MMixel UI",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Cha_Shao",
+  "license": "MIT",
   "dependencies": {
     "classnames": "^2.5.1",
     "react": "^18.3.1",
@@ -24,5 +24,16 @@
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
-  }
+  },
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cha-Shao/mmixel-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Cha-Shao/mmixel-ui/issues"
+  },
+  "homepage": "https://github.com/Cha-Shao/mmixel-ui#readme"
 }
