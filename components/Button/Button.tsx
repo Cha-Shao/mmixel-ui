@@ -1,18 +1,24 @@
 import classNames from "classnames"
 import { HTMLAttributes } from "react"
 
-enum ButtonSize {
+export enum ButtonSize {
   Tiny = 'ty',
   Small = 'sm',
   Medium = 'md',
   Large = 'lg',
 }
 
-enum ButtonVariant {
+export enum ButtonVariant {
   Solid = 'solid',
   Secondary = 'secondary',
   Ghost = 'ghost',
   Link = 'link',
+}
+
+export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+  variant: ButtonVariant
+  size: ButtonSize
+  rounded?: boolean
 }
 
 const Button = (
@@ -21,11 +27,7 @@ const Button = (
     size,
     rounded,
     ...attrs
-  }: {
-    variant: ButtonVariant,
-    size: ButtonSize,
-    rounded?: boolean,
-  } & HTMLAttributes<HTMLButtonElement>
+  }: ButtonProps
 ) => {
   return (
     <button

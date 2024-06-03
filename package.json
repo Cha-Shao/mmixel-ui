@@ -6,7 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "mmixel",
+    "mmixel ui",
+    "ui",
+    "react ui",
+    "react components",
+    "components"
+  ],
   "author": "Cha_Shao",
   "license": "MIT",
   "dependencies": {
