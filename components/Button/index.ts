@@ -3,7 +3,7 @@ import Button from "./Button"
 export type {
   ButtonProps,
   ButtonSize,
-  ButtonVariant
+  ButtonVariant,
 } from "./Button"
 
 export { Button }
