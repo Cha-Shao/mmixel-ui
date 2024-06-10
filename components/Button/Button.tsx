@@ -48,38 +48,40 @@ const Button = (
         attrs.className
       )}
     >
-      {(loading && !icon) && (
+      {!icon && (
         <AnimatePresence mode="wait">
-          <motion.span
-            key={"loading"}
-            className={classNames(
-              "icon-[ph--circle-notch-bold] animate-spin duration-200",
-              size === "ty" && "h-4",
-              size === "sm" && "h-4",
-              size === "md" && "h-5",
-              size === "lg" && "h-6",
-            )}
-            initial={{
-              opacity: 0,
-              width: "0",
-              marginRight: "0",
-            }}
-            animate={{
-              opacity: 1,
-              width: classNames(
-                size === "ty" && "1rem",
-                size === "sm" && "1.125rem",
-                size === "md" && "1.25rem",
-                size === "lg" && "1.5rem",
-              ),
-              marginRight: "0.5rem",
-            }}
-            exit={{
-              opacity: 0,
-              width: "0",
-              marginRight: "0",
-            }}
-          />
+          {loading && (
+            <motion.span
+              key={"loading"}
+              className={classNames(
+                "icon-[ph--circle-notch-bold] animate-spin duration-200",
+                size === "ty" && "h-4",
+                size === "sm" && "h-4",
+                size === "md" && "h-5",
+                size === "lg" && "h-6",
+              )}
+              initial={{
+                opacity: 0,
+                width: "0",
+                marginRight: "0",
+              }}
+              animate={{
+                opacity: 1,
+                width: classNames(
+                  size === "ty" && "1rem",
+                  size === "sm" && "1.125rem",
+                  size === "md" && "1.25rem",
+                  size === "lg" && "1.5rem",
+                ),
+                marginRight: "0.5rem",
+              }}
+              exit={{
+                opacity: 0,
+                width: "0",
+                marginRight: "0",
+              }}
+            />
+          )}
         </AnimatePresence>
       )}
       {icon && (
