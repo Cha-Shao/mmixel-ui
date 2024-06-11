@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion"
 
 export type ButtonSize = "ty" | "sm" | "md" | "lg"
 
-export type ButtonVariant = "solid" | "muted" | "ghost" | "link"
+export type ButtonVariant = "solid" | "muted" | "ghost" | "link" | "border"
 
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
@@ -32,12 +32,14 @@ const Button = (
     <button
       {...attrs}
       className={classNames(
-        "flex items-center",
+        "flex items-center duration-200",
         variant === "muted" && "bg-muted",
-        size === "ty" && `p-1 ${iconOnly ? "px-1" : "px-2"} text-xs`,
-        size === "sm" && `p-1.5 ${iconOnly ? "px-1.5" : "px-3"} text-sm`,
-        size === "md" && `p-2 ${iconOnly ? "px-2.5" : "px-4"} text-base`,
-        size === "lg" && `p-3 ${iconOnly ? "px-3" : "px-6"} text-lg`,
+        variant === "ghost" && "hover:bg-muted",
+        variant === "border" && "border border-border",
+        size === "ty" && `p-1 ${!iconOnly && "px-2"} text-xs`,
+        size === "sm" && `p-1.5 ${!iconOnly && "px-3"} text-sm`,
+        size === "md" && `p-2 ${!iconOnly && "px-4"} text-base`,
+        size === "lg" && `p-3 ${!iconOnly && "px-6"} text-lg`,
         rounded ? "rounded-full" : "rounded-lg",
         (disabled || loading)
           ? "opacity-50 cursor-not-allowed"
@@ -55,10 +57,10 @@ const Button = (
               key={"loading"}
               className={classNames(
                 "icon-[ph--circle-notch-bold] animate-spin duration-200",
-                size === "ty" && "h-4",
-                size === "sm" && "h-4",
-                size === "md" && "h-5",
-                size === "lg" && "h-6",
+                size === "ty" && "text-base",
+                size === "sm" && "text-lg",
+                size === "md" && "text-xl",
+                size === "lg" && "text-2xl",
               )}
               initial={{
                 opacity: 0,
@@ -87,12 +89,12 @@ const Button = (
       {icon && (
         <span
           className={classNames(
-            "icon",
-            size === "ty" && "h-4",
-            size === "sm" && "h-4",
-            size === "md" && "h-5",
-            size === "lg" && "h-6",
-            loading && "mr-1"
+            "flex justify-center items-center",
+            size === "ty" && "text-base",
+            size === "sm" && "text-lg",
+            size === "md" && "text-xl",
+            size === "lg" && "text-2xl",
+            !iconOnly && 'mr-2'
           )}
         >
           <span className={classNames(
