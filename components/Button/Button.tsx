@@ -31,6 +31,7 @@ const Button = (
   return (
     <button
       {...attrs}
+      disabled={disabled || loading}
       className={classNames(
         "flex items-center duration-200",
         variant === "muted" && "bg-muted",
@@ -57,8 +58,8 @@ const Button = (
               key={"loading"}
               className={classNames(
                 "icon-[ph--circle-notch-bold] animate-spin duration-200",
-                size === "ty" && "text-base",
-                size === "sm" && "text-lg",
+                size === "ty" && "text-sm",
+                size === "sm" && "text-base",
                 size === "md" && "text-xl",
                 size === "lg" && "text-2xl",
               )}
@@ -90,8 +91,8 @@ const Button = (
         <span
           className={classNames(
             "flex justify-center items-center",
-            size === "ty" && "text-base",
-            size === "sm" && "text-lg",
+            size === "ty" && "text-sm",
+            size === "sm" && "text-base",
             size === "md" && "text-xl",
             size === "lg" && "text-2xl",
             !iconOnly && 'mr-2'

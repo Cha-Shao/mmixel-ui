@@ -1,6 +1,10 @@
 import classNames from "classnames"
 import { Title } from "../Title"
-import { HTMLAttributes } from "react"
+import {
+  ForwardedRef,
+  forwardRef,
+  HTMLAttributes
+} from "react"
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   title?: string
@@ -13,36 +17,30 @@ const Card = ({
   border,
   deep,
   ...attrs
-}: CardProps) => {
+}: CardProps,
+  ref: ForwardedRef<HTMLDivElement>
+) => {
   return (
     <div
       {...attrs}
+      ref={ref}
       className={classNames(
         border ? "border border-border" : "",
+        "rounded-2xl",
+        deep ? "bg-background" : "bg-foreground",
         attrs.className
       )}
     >
       {title && (
-        <div
-          className={classNames(
-            "rounded-t-2xl p-6 pb-0",
-            deep ? "bg-background" : "bg-foreground",
-          )}
-        >
+        <div className="p-6 pb-0">
           <Title>{title}</Title>
         </div>
       )}
-      <div
-        className={classNames(
-          !title && "rounded-t-2xl",
-          deep ? "bg-background" : "bg-foreground",
-          "rounded-b-2xl p-6"
-        )}
-      >
+      <div className="p-6">
         {attrs.children}
       </div>
     </div>
   )
 }
 
-export default Card
+export default forwardRef(Card)
