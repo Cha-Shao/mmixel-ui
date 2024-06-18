@@ -1,3 +1,5 @@
+'use client'
+
 import classNames from "classnames"
 import { HTMLAttributes } from "react"
 import { AnimatePresence, motion } from "framer-motion"
@@ -52,7 +54,7 @@ const Button = (
       )}
     >
       {!icon && (
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           {loading && (
             <motion.span
               key={"loading"}
@@ -99,7 +101,7 @@ const Button = (
           )}
         >
           <span className={classNames(
-            loading ? "ph--circle-notch-bold" : icon
+            loading ? "icon-[ph--circle-notch-bold] animate-spin" : icon
           )} />
         </span>
       )}

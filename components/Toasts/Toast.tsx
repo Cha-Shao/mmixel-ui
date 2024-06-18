@@ -42,7 +42,7 @@ const Toast = ({
         className="shadow relative"
       >
         <div className="flex pr-10">
-          <div className="mr-2">
+          <div className="mr-2 flex justify-center items-center">
             {error
               ? <span className="icon-[ph--x-circle-bold] text-2xl text-dangerous" />
               : <span className="icon-[ph--check-circle-bold] text-2xl text-success" />
