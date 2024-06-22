@@ -1,10 +1,11 @@
 "use client"
 
 import { cloneElement, useEffect, useRef, useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, HTMLMotionProps, motion } from "framer-motion"
 import { createPortal } from "react-dom"
+import classNames from "classnames"
 
-export interface HoverCardProps {
+export interface HoverCardProps extends HTMLMotionProps<'div'> {
   trigger: React.ReactElement
   children: React.ReactNode
   openDelay?: number
@@ -16,6 +17,7 @@ const HoverCard = ({
   children,
   openDelay = 0,
   closeDelay = 200,
+  ...attrs
 }: HoverCardProps) => {
   const triggerRef = useRef<HTMLDivElement>(null)
   const hoverCardRef = useRef<HTMLDivElement>(null)
@@ -43,7 +45,6 @@ const HoverCard = ({
         openTimer.current = setTimeout(() => {
           setOpen(false)
         }, closeDelay)
-
       }
     }
 
@@ -88,7 +89,11 @@ const HoverCard = ({
                 opacity: 0,
                 y: triggerRef.current!.getBoundingClientRect().bottom
               }}
-              className="absolute top-0 left-0"
+              className={classNames(
+                'absolute z-10',
+                attrs.className
+              )}
+              {...attrs}
             >
               {children}
             </motion.div>

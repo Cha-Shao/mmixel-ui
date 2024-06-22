@@ -26,19 +26,15 @@ const Card = ({
       ref={ref}
       className={classNames(
         border ? "border border-border" : "",
-        "rounded-2xl",
+        "rounded-2xl p-6",
         deep ? "bg-background" : "bg-foreground",
         attrs.className
       )}
     >
       {title && (
-        <div className="p-6 pb-0">
-          <Title>{title}</Title>
-        </div>
+        <Title className="mb-6">{title}</Title>
       )}
-      <div className="p-6">
-        {attrs.children}
-      </div>
+      {attrs.children}
     </div>
   )
 }
