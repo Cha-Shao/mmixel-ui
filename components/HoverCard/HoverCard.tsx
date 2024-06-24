@@ -93,6 +93,10 @@ const HoverCard = ({
                 'absolute z-10',
                 attrs.className
               )}
+              style={{
+                top: 0,
+                ...attrs.style,
+              }}
               {...attrs}
             >
               {children}
