@@ -66,9 +66,22 @@ const HoverCard = ({
 
   useEffect(() => {
     if (open && triggerRef.current && hoverCardRef.current) {
+      const triggerRect = triggerRef.current.getBoundingClientRect()
+      const hoverCardRect = hoverCardRef.current.getBoundingClientRect()
+
+      const topOffset = triggerRect.bottom + scrollY
+      const leftOffset = triggerRect.left
+        + scrollX
+        + triggerRect.width / 2
+        - hoverCardRect.width / 2
+
       setPosition({
-        top: triggerRef.current.getBoundingClientRect().bottom + scrollY,
-        left: triggerRef.current.getBoundingClientRect().left + scrollX - (hoverCardRef.current.getBoundingClientRect().width - triggerRef.current.getBoundingClientRect().width) / 2,
+        top: topOffset,
+        left: leftOffset
+          // // card超出屏幕的话
+          - (leftOffset + hoverCardRect.width > innerWidth
+            ? leftOffset + hoverCardRect.width - innerWidth
+            : 0)
       })
     }
   }, [open])
