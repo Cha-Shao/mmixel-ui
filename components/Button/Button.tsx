@@ -38,7 +38,7 @@ const Button = (
         "inline-flex items-center duration-200",
         variant === "muted" && "bg-muted",
         variant === "ghost" && "hover:bg-muted",
-        variant === "border" && "border border-border",
+        variant === "border" && "border border-border hover:bg-muted",
         size === "ty" && `p-1 ${!iconOnly && "px-2"} text-xs`,
         size === "sm" && `p-1.5 ${!iconOnly && "px-3"} text-sm`,
         size === "md" && `p-2 ${!iconOnly && "px-4"} text-base`,
