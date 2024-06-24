@@ -11,6 +11,8 @@ export interface HoverCardProps extends HTMLMotionProps<'div'> {
   children: React.ReactNode
   openDelay?: number
   closeDelay?: number
+  topOffset?: number
+  leftOffset?: number
 }
 
 const HoverCard = ({
@@ -18,6 +20,8 @@ const HoverCard = ({
   children,
   openDelay = 0,
   closeDelay = 200,
+  topOffset = 0,
+  leftOffset = 0,
   ...attrs
 }: HoverCardProps) => {
   const isClient = useIsClient()
@@ -91,8 +95,8 @@ const HoverCard = ({
                 attrs.className
               )}
               style={{
-                top: position.top,
-                left: position.left,
+                top: position.top + topOffset,
+                left: position.left + leftOffset,
                 ...attrs.style,
               }}
               {...attrs}
