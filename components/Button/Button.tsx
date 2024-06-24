@@ -35,7 +35,7 @@ const Button = (
       {...attrs}
       disabled={disabled || loading}
       className={classNames(
-        "flex items-center duration-200",
+        "inline-flex items-center duration-200",
         variant === "muted" && "bg-muted",
         variant === "ghost" && "hover:bg-muted",
         variant === "border" && "border border-border",
