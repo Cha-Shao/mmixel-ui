@@ -108,9 +108,9 @@ const HoverCard = ({
                 attrs.className
               )}
               style={{
+                ...attrs.style,
                 top: position.top + topOffset,
                 left: position.left + leftOffset,
-                ...attrs.style,
               }}
               {...attrs}
             >
