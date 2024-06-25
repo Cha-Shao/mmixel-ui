@@ -1,7 +1,7 @@
 'use client'
 
 import classNames from "classnames"
-import { HTMLAttributes } from "react"
+import { ForwardedRef, forwardRef, HTMLAttributes } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
 export type ButtonSize = "ty" | "sm" | "md" | "lg"
@@ -28,11 +28,13 @@ const Button = (
     disabled,
     icon,
     ...attrs
-  }: ButtonProps
+  }: ButtonProps,
+  ref: ForwardedRef<HTMLButtonElement>
 ) => {
   return (
     <button
       {...attrs}
+      ref={ref}
       disabled={disabled || loading}
       className={classNames(
         "inline-flex items-center duration-200",
@@ -110,4 +112,4 @@ const Button = (
   )
 }
 
-export default Button
+export default forwardRef(Button)
