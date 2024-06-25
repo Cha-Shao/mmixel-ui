@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion"
 
 export type ButtonSize = "ty" | "sm" | "md" | "lg"
 
-export type ButtonVariant = "solid" | "muted" | "ghost" | "link" | "border"
+export type ButtonVariant = "solid" | "primary" | "muted" | "ghost" | "link" | "border"
 
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
@@ -38,6 +38,7 @@ const Button = (
       disabled={disabled || loading}
       className={classNames(
         "inline-flex items-center duration-200",
+        variant === "primary" && "bg-primary text-white",
         variant === "muted" && "bg-muted",
         variant === "ghost" && "hover:bg-muted",
         variant === "border" && "border border-border hover:bg-muted",

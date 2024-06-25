@@ -74,7 +74,6 @@ const Dropdown = ({
         ref: triggerRef,
       }
     )}
-    {open.toString()}
     {createPortal(
       (
         <AnimatePresence>
