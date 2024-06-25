@@ -99,6 +99,7 @@ const HoverCard = ({
         <AnimatePresence>
           {open && (
             <motion.div
+              {...attrs}
               ref={hoverCardRef}
               initial={{ opacity: 0, y: 0 }}
               animate={{ opacity: 1, y: 10 }}
@@ -112,7 +113,6 @@ const HoverCard = ({
                 top: position.top + topOffset,
                 left: position.left + leftOffset,
               }}
-              {...attrs}
             >
               {children}
             </motion.div>
