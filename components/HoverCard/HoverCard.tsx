@@ -13,6 +13,7 @@ export interface HoverCardProps extends HTMLMotionProps<'div'> {
   closeDelay?: number
   topOffset?: number
   leftOffset?: number
+  disabled?: boolean
 }
 
 const HoverCard = ({
@@ -22,6 +23,7 @@ const HoverCard = ({
   closeDelay = 200,
   topOffset = 0,
   leftOffset = 0,
+  disabled,
   ...attrs
 }: HoverCardProps) => {
   const isClient = useIsClient()
@@ -34,6 +36,9 @@ const HoverCard = ({
 
   useEffect(() => {
     const handleHover = (e: MouseEvent) => {
+      e.stopPropagation()
+      e.preventDefault()
+      if (disabled) return
       if (
         triggerRef.current?.contains(e.target as Node)
         || hoverCardRef.current?.contains(e.target as Node)
@@ -62,7 +67,7 @@ const HoverCard = ({
       removeEventListener("mouseover", handleHover)
       removeEventListener("mouseout", handleHover)
     }
-  }, [])
+  }, [disabled])
 
   useEffect(() => {
     if (open && triggerRef.current && hoverCardRef.current) {
