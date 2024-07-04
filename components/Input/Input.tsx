@@ -5,13 +5,11 @@ import { ForwardedRef, forwardRef, InputHTMLAttributes } from "react"
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> {
   onChange?: (value: string) => void
-  showCount?: number
   errMessage?: string | null
 }
 
 const Input = ({
   onChange,
-  showCount,
   errMessage,
   ...attrs
 }: InputProps,
@@ -29,6 +27,7 @@ const Input = ({
           : errMessage
             ? 'border-dangerous bg-dangerous bg-opacity-20 placeholder:text-dangerous'
             : 'border-border focus:border-primary bg-transparent',
+        attrs.placeholder?.startsWith("【") && "placeholder:-indent-2",
         attrs.className
       )}
       onChange={e => onChange && onChange(e.target.value)}

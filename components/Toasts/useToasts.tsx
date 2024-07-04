@@ -11,7 +11,7 @@ const useToasts = () => {
     setToasts(toasts => [
       ...toasts,
       {
-        id: new Date().getTime(),
+        id: new Date().getTime() + Math.random(),
         label,
         error: config?.error,
       }
