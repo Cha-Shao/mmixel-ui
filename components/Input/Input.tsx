@@ -23,7 +23,8 @@ const Input = ({
         'outline-none',
         'px-3 py-2',
         'border rounded-lg duration-200',
-        attrs.disabled ? 'bg-muted cursor-no-drop'
+        attrs.disabled
+          ? 'bg-muted cursor-no-drop'
           : errMessage
             ? 'border-dangerous bg-dangerous bg-opacity-20 placeholder:text-dangerous'
             : 'border-border focus:border-primary bg-transparent',
