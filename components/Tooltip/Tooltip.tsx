@@ -15,7 +15,6 @@ const Tooltip = ({
   label,
   placement = "top",
   children,
-  ...attrs
 }: TooltipProps,
   ref: ForwardedRef<HTMLDivElement>) => {
   const isClient = useIsClient()

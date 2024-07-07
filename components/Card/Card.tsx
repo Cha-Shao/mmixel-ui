@@ -3,7 +3,7 @@ import { Title } from "../Title"
 import {
   ForwardedRef,
   forwardRef,
-  HTMLAttributes
+  HTMLAttributes,
 } from "react"
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {

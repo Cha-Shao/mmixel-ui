@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import classNames from "classnames"
 import { ForwardedRef, forwardRef, HTMLAttributes } from "react"
@@ -100,7 +100,7 @@ const Button = (
             size === "sm" && "text-base",
             size === "md" && "text-xl",
             size === "lg" && "text-2xl",
-            !iconOnly && 'mr-2'
+            !iconOnly && "mr-2"
           )}
         >
           <span className={classNames(

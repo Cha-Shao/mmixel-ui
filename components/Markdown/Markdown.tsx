@@ -5,7 +5,7 @@ import { HTMLAttributes } from "react"
 import ReactMarkdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
-import rehypeHighlight from 'rehype-highlight'
+import rehypeHighlight from "rehype-highlight"
 import { Details } from "../Details"
 
 export interface MarkdownProps extends HTMLAttributes<HTMLDivElement> {
@@ -20,9 +20,9 @@ const Markdown = (attrs: MarkdownProps) => {
       const imageTwo = /!\[[^\]]*\]\((.*?)\)/g.exec(g3)?.[1]
 
       return (
-        "<div class='grid grid-cols-2 gap-2'>" + "\n" +
-        `<img src='${imageOne}' alt=''>` + "\n" +
-        `<img src='${imageTwo}' alt=''>` + "\n" +
+        "<div class=\"grid grid-cols-2 gap-2\">" + "\n" +
+        `<img src="${imageOne}" alt="">` + "\n" +
+        `<img src="${imageTwo}" alt="">` + "\n" +
         "</div>"
       )
     })

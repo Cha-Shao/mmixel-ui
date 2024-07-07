@@ -6,11 +6,12 @@ import { AnimatePresence, motion, HTMLMotionProps } from "framer-motion"
 import { cloneElement, useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 
-export interface DropdownProps extends HTMLMotionProps<'div'> {
+export interface DropdownProps extends HTMLMotionProps<"div"> {
   trigger: React.ReactElement
   children: React.ReactNode
   topOffset?: number
   leftOffset?: number
+  keepOpen?: boolean
 }
 
 const Dropdown = ({
@@ -18,6 +19,7 @@ const Dropdown = ({
   children,
   topOffset = 0,
   leftOffset = 0,
+  keepOpen = false,
   ...attrs
 }: DropdownProps) => {
   const isClient = useIsClient()
@@ -32,7 +34,7 @@ const Dropdown = ({
       if (
         e.target === triggerRef.current
         || triggerRef.current?.contains(e.target as Node)
-        || dropdownRef.current?.contains(e.target as Node)
+        || (() => keepOpen && dropdownRef.current?.contains(e.target as Node))()
       ) setOpen(true)
       else setOpen(false)
 
@@ -61,7 +63,7 @@ const Dropdown = ({
           // // card超出屏幕的话
           - (leftOffset + hoverCardRect.width > innerWidth
             ? leftOffset + hoverCardRect.width - innerWidth
-            : 0)
+            : 0),
       })
     }
   }, [open])

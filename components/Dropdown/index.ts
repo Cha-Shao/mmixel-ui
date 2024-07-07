@@ -1,7 +1,7 @@
-import Dropdown from './Dropdown'
+import Dropdown from "./Dropdown"
 
 export type {
-  DropdownProps
-} from './Dropdown'
+  DropdownProps,
+} from "./Dropdown"
 
 export { Dropdown }

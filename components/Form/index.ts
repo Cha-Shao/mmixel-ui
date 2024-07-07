@@ -1,15 +1,15 @@
-import FormList from './FormList'
-import FormItem from './FormItem'
+import FormList from "./FormList"
+import FormItem from "./FormItem"
 
 export type {
-  FormListProps
-} from './FormList'
+  FormListProps,
+} from "./FormList"
 
 export type {
-  FormItemProps
-} from './FormItem'
+  FormItemProps,
+} from "./FormItem"
 
 export {
   FormList,
-  FormItem
+  FormItem,
 }

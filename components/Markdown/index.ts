@@ -1,7 +1,7 @@
-import Markdown from './Markdown'
+import Markdown from "./Markdown"
 
 export type {
-  MarkdownProps
-} from './Markdown'
+  MarkdownProps,
+} from "./Markdown"
 
 export { Markdown } 

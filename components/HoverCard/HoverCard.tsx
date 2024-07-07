@@ -6,7 +6,7 @@ import { createPortal } from "react-dom"
 import classNames from "classnames"
 import useIsClient from "../../utils/isClient"
 
-export interface HoverCardProps extends HTMLMotionProps<'div'> {
+export interface HoverCardProps extends HTMLMotionProps<"div"> {
   trigger: React.ReactElement
   children: React.ReactNode
   openDelay?: number
@@ -67,7 +67,7 @@ const HoverCard = ({
       removeEventListener("mouseover", handleHover)
       removeEventListener("mouseout", handleHover)
     }
-  }, [disabled])
+  }, [disabled, closeDelay, openDelay])
 
   useEffect(() => {
     if (open && triggerRef.current && hoverCardRef.current) {
@@ -86,7 +86,7 @@ const HoverCard = ({
           // // card超出屏幕的话
           - (leftOffset + hoverCardRect.width > innerWidth
             ? leftOffset + hoverCardRect.width - innerWidth
-            : 0)
+            : 0),
       })
     }
   }, [open])
@@ -110,7 +110,7 @@ const HoverCard = ({
               animate={{ opacity: 1, y: 8 }}
               exit={{ opacity: 0, y: 0 }}
               className={classNames(
-                'absolute z-10',
+                "absolute z-10",
                 attrs.className
               )}
               style={{

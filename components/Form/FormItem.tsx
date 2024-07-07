@@ -21,8 +21,8 @@ const FormItem = ({
       {...attrs}
       htmlFor={htmlFor}
       className={classNames(
-        'pt-2 relative',
-        required && 'before:content-["*"] before:absolute before:-left-3 before:text-dangerous',
+        "pt-2 relative",
+        required && "before:content-[\"*\"] before:absolute before:-left-3 before:text-dangerous",
         attrs.className
       )}
     >
