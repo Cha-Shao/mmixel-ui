@@ -28,7 +28,7 @@ const Toast = ({
     }, 1e4)
 
     return () => clearTimeout(timer)
-  }, [])
+  }, [id, toasts])
 
   return (
     <motion.div

@@ -1,5 +1,5 @@
-import type { Config } from "tailwindcss";
-import { addDynamicIconSelectors } from '@iconify/tailwind'
+import type { Config } from "tailwindcss"
+import { addDynamicIconSelectors } from "@iconify/tailwind"
 
 const config: Config = {
   content: [
@@ -17,7 +17,7 @@ const config: Config = {
     },
   },
   plugins: [
-    addDynamicIconSelectors()
+    addDynamicIconSelectors(),
   ],
-};
-export default config;
+}
+export default config

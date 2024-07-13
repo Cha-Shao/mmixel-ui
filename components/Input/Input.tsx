@@ -6,11 +6,13 @@ import { ForwardedRef, forwardRef, InputHTMLAttributes } from "react"
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> {
   onChange?: (value: string) => void
   errMessage?: string | null
+  rounded?: boolean
 }
 
 const Input = ({
   onChange,
   errMessage,
+  rounded,
   ...attrs
 }: InputProps,
   ref: ForwardedRef<HTMLInputElement>) => {
@@ -22,7 +24,8 @@ const Input = ({
       className={classNames(
         "outline-none",
         "px-3 py-2",
-        "border rounded-lg duration-200",
+        rounded ? "rounded-full" : "rounded-lg",
+        "border duration-200",
         attrs.disabled
           ? "bg-muted cursor-no-drop"
           : errMessage

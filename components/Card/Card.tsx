@@ -10,12 +10,14 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   title?: string
   border?: boolean
   deep?: boolean
+  size?: "sm" | "md" | "lg"
 }
 
 const Card = ({
   title,
   border,
   deep,
+  size,
   ...attrs
 }: CardProps,
   ref: ForwardedRef<HTMLDivElement>
@@ -32,7 +34,7 @@ const Card = ({
       )}
     >
       {title && (
-        <Title className="mb-6">{title}</Title>
+        <Title className="mb-6" size={size}>{title}</Title>
       )}
       {attrs.children}
     </div>

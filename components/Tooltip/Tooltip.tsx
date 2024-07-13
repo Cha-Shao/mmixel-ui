@@ -24,7 +24,7 @@ const Tooltip = ({
   useImperativeHandle(ref, () => internalTriggerRef.current as HTMLDivElement)
 
   const [show, setShow] = useState<boolean>(false)
-  const [position, setPosition] = useState<{ top: number, left: number }>({ top: 0, left: 0 })
+  const [styles, setStyles] = useState<{ top: number, left: number }>({ top: 0, left: 0 })
 
   useEffect(() => {
     const handleHover = (e: MouseEvent) => {
@@ -39,9 +39,9 @@ const Tooltip = ({
         setShow(false)
       }
     }
-    document.addEventListener('mouseover', handleHover)
+    document.addEventListener("mouseover", handleHover)
     return () => {
-      document.removeEventListener('mouseover', handleHover)
+      document.removeEventListener("mouseover", handleHover)
     }
   }, [])
 
@@ -52,32 +52,32 @@ const Tooltip = ({
       const tooltipHeight = tooltipRef.current.getBoundingClientRect().height
       switch (placement) {
         case "top":
-          setPosition({
+          setStyles({
             top: top - tooltipHeight + scrollY,
             left: left + scrollX + width / 2 - tooltipWidth / 2,
           })
           break
         case "right":
-          setPosition({
+          setStyles({
             top: top + height / 2 - tooltipHeight / 2 + scrollY,
             left: left + scrollX + width,
           })
           break
         case "bottom":
-          setPosition({
+          setStyles({
             top: top + height + scrollY,
             left: left + scrollX + width / 2 - tooltipWidth / 2,
           })
           break
         case "left":
-          setPosition({
+          setStyles({
             top: top + height / 2 - tooltipHeight / 2 + scrollY,
             left: left + scrollX - tooltipWidth,
           })
           break
       }
     }
-  }, [show])
+  }, [show, placement])
 
   return isClient && (<>
     {cloneElement(
@@ -96,11 +96,8 @@ const Tooltip = ({
               initial={{ opacity: 0, y: 0 }}
               animate={{ opacity: 1, y: 8 }}
               exit={{ opacity: 0, y: 0 }}
-              className='absolute z-10 px-1.5 py-0.5 rounded-full bg-black text-white text-xs whitespace-nowrap'
-              style={{
-                top: position.top,
-                left: position.left,
-              }}
+              className="absolute z-10 px-1.5 py-0.5 rounded-full bg-black text-white text-xs whitespace-nowrap"
+              style={styles}
             >
               {label}
             </motion.span>

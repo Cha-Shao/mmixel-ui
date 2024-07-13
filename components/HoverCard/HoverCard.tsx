@@ -1,6 +1,6 @@
 "use client"
 
-import { cloneElement, useEffect, useRef, useState } from "react"
+import { cloneElement, MouseEvent, useEffect, useRef, useState } from "react"
 import { AnimatePresence, HTMLMotionProps, motion } from "framer-motion"
 import { createPortal } from "react-dom"
 import classNames from "classnames"
@@ -30,47 +30,35 @@ const HoverCard = ({
   const triggerRef = useRef<HTMLDivElement>(null)
   const hoverCardRef = useRef<HTMLDivElement>(null)
   const openTimer = useRef<NodeJS.Timeout | null>(null)
-  const [open, setOpen] = useState<boolean>(false)
+  const [show, setShow] = useState<boolean>(false)
 
   const [position, setPosition] = useState<{ top: number, left: number }>({ top: 0, left: 0 })
 
-  useEffect(() => {
-    const handleHover = (e: MouseEvent) => {
-      e.stopPropagation()
-      e.preventDefault()
-      if (disabled) return
-      if (
-        triggerRef.current?.contains(e.target as Node)
-        || hoverCardRef.current?.contains(e.target as Node)
-      ) {
-        if (openTimer.current) {
-          clearTimeout(openTimer.current)
-        }
-        openTimer.current = setTimeout(() => {
-          setOpen(true)
-        }, openDelay)
+  const handleOpen = (e: MouseEvent) => {
+    e.stopPropagation()
+    e.preventDefault()
+    if (disabled) return
 
-      }
-      else {
-        if (openTimer.current) {
-          clearTimeout(openTimer.current)
-        }
-        openTimer.current = setTimeout(() => {
-          setOpen(false)
-        }, closeDelay)
-      }
+    if (openTimer.current) {
+      clearTimeout(openTimer.current)
     }
-
-    addEventListener("mouseover", handleHover)
-    addEventListener("mouseout", handleHover)
-    return () => {
-      removeEventListener("mouseover", handleHover)
-      removeEventListener("mouseout", handleHover)
+    openTimer.current = setTimeout(() => {
+      setShow(true)
+    }, openDelay)
+  }
+  const handleClose = (e: MouseEvent) => {
+    e.stopPropagation()
+    e.preventDefault()
+    if (openTimer.current) {
+      clearTimeout(openTimer.current)
     }
-  }, [disabled, closeDelay, openDelay])
+    openTimer.current = setTimeout(() => {
+      setShow(false)
+    }, closeDelay)
+  }
 
   useEffect(() => {
-    if (open && triggerRef.current && hoverCardRef.current) {
+    if (show && triggerRef.current && hoverCardRef.current) {
       const triggerRect = triggerRef.current.getBoundingClientRect()
       const hoverCardRect = hoverCardRef.current.getBoundingClientRect()
 
@@ -89,20 +77,28 @@ const HoverCard = ({
             : 0),
       })
     }
-  }, [open])
+  }, [show])
 
   return isClient && (<>
     {cloneElement(
       trigger,
       {
         ...trigger.props,
+        onMouseEnter: (e: MouseEvent<HTMLElement>) => {
+          handleOpen(e)
+          trigger.props.onMouseEnter && trigger.props.onMouseEnter(e)
+        },
+        onMouseLeave: (e: MouseEvent<HTMLElement>) => {
+          handleClose(e)
+          trigger.props.onMouseLeave && trigger.props.onMouseLeave(e)
+        },
         ref: triggerRef,
       }
     )}
     {createPortal(
       (
         <AnimatePresence>
-          {open && (
+          {show && (
             <motion.div
               {...attrs}
               ref={hoverCardRef}
@@ -117,6 +113,12 @@ const HoverCard = ({
                 ...attrs.style,
                 top: position.top + topOffset,
                 left: position.left + leftOffset,
+              }}
+              onMouseEnter={(e) => {
+                handleOpen(e)
+              }}
+              onMouseLeave={(e) => {
+                handleClose(e)
               }}
             >
               {children}

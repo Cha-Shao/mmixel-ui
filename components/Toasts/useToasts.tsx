@@ -14,7 +14,7 @@ const useToasts = () => {
         id: new Date().getTime() + Math.random(),
         label,
         error: config?.error,
-      }
+      },
     ])
   }
 

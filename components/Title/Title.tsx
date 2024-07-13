@@ -15,10 +15,10 @@ const Title = ({
         <h3
           {...attrs}
           className={classNames(
-            "text-2xl font-bold",
+            "text-xl font-bold",
             typeof attrs.children === "string" &&
             attrs.children.startsWith("【") &&
-            "-indent-2",
+            "-indent-1",
             attrs.className
           )}
         />
@@ -28,10 +28,10 @@ const Title = ({
         <h2
           {...attrs}
           className={classNames(
-            "text-3xl font-bold",
+            "text-2xl font-bold",
             typeof attrs.children === "string" &&
             attrs.children.startsWith("【") &&
-            "-indent-4",
+            "-indent-3",
             attrs.className
           )}
         />

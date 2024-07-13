@@ -15,10 +15,10 @@ export interface ProgressProps extends HTMLAttributes<HTMLDivElement> {
 
 const Progress = ({
   progress,
-  progressColor = 'hsl(var(--primary))',
-  backgroundColor = 'hsl(var(--muted) / 0.1)',
-  progressTextColor = 'white',
-  backgroundTextColor = 'hsl(var(--border) / 1)',
+  progressColor = "hsl(var(--primary))",
+  backgroundColor = "hsl(var(--muted) / 0.1)",
+  progressTextColor = "white",
+  backgroundTextColor = "hsl(var(--border) / 1)",
   ...attrs
 }: ProgressProps) => {
   return (
@@ -29,20 +29,20 @@ const Progress = ({
         attrs.className
       )}
       style={{
-        backgroundColor
+        backgroundColor,
       }}
     >
       <div
         className="absolute top-0 left-0 h-full duration-500"
         style={{
           width: `${progress}%`,
-          backgroundColor: progressColor
+          backgroundColor: progressColor,
         }}
       />
       <div className={classNames(
         "absolute top-0 left-0",
-        'w-full h-full',
-        'flex items-center justify-center',
+        "w-full h-full",
+        "flex items-center justify-center",
       )}>
         <Title
           className="absolute"

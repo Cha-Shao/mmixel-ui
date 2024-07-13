@@ -5,7 +5,7 @@ import {
   Dispatch,
   PropsWithChildren,
   SetStateAction,
-  useState
+  useState,
 } from "react"
 import Toast, { ToastProps } from "./Toast"
 import { AnimatePresence } from "framer-motion"
@@ -15,11 +15,11 @@ export const ToastContext = createContext<{
   setToasts: Dispatch<SetStateAction<ToastProps[]>>
 }>({
   toasts: [],
-  setToasts: () => { }
+  setToasts: () => { },
 })
 
 const ToastProvider = ({
-  children
+  children,
 }: PropsWithChildren) => {
   const [toasts, setToasts] = useState<ToastProps[]>([])
 
