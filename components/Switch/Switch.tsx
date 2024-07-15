@@ -14,7 +14,7 @@ const Switch = ({
   className,
 }: SwitchProps) => {
   return (
-    <label className={classNames('w-fit', className)}>
+    <label className={classNames("w-fit", className)}>
       <input
         type="checkbox"
         checked={value}

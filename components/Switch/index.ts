@@ -1,7 +1,7 @@
 import Switch from "./Switch"
 
 export type {
-  SwitchProps
+  SwitchProps,
 } from "./Switch"
 
 export { Switch }
