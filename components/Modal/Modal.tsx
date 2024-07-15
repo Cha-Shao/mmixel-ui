@@ -20,7 +20,7 @@ const Modal = ({
   open,
   onClose,
   children,
-  dismissable = true
+  dismissable = true,
 }: ModalProps) => {
   const dismissRef = useRef<HTMLDivElement>(null)
 
