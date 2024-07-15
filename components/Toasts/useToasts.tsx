@@ -1,33 +1,50 @@
 import { useContext } from "react"
 import { ToastContext } from "./ToastProvider"
+import { ToastType } from "./Toast"
 
-const useToasts = () => {
-  const { setToasts } = useContext(ToastContext)
+class Toast {
+  private setToasts
 
-  const create = (
+  constructor() {
+    const { setToasts } = useContext(ToastContext)
+    this.setToasts = setToasts
+  }
+
+  private create(
     label: string,
-    config?: { error: boolean }
-  ) => {
-    setToasts(toasts => [
+    type: ToastType = "success",
+  ) {
+    this.setToasts(toasts => [
       ...toasts,
       {
         id: new Date().getTime() + Math.random(),
         label,
-        error: config?.error,
+        type
       },
     ])
   }
 
-  const remove = (id: number) => {
-    setToasts(toasts =>
+  public success(label: string) {
+    this.create(label)
+  }
+  public info(label: string) {
+    this.create(label, "info")
+  }
+  public warn(label: string) {
+    this.create(label, "warn")
+  }
+  public error(label: string) {
+    this.create(label, "error")
+  }
+  public remove(id: number) {
+    this.setToasts(toasts =>
       toasts.filter(({ id: thisId }) => thisId !== id)
     )
   }
+}
 
-  return {
-    create,
-    remove,
-  }
+const useToasts = () => {
+  return new Toast()
 }
 
 export default useToasts

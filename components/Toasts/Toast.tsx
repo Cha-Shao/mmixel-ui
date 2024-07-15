@@ -8,16 +8,18 @@ import {
   useEffect,
 } from "react"
 
+export type ToastType = "success" | "info" | "warn" | "error"
+
 export interface ToastProps {
   id: number
   label: string
-  error?: boolean
+  type?: ToastType
 }
 
 const Toast = ({
   id,
   label,
-  error,
+  type = "success",
 }: ToastProps) => {
   const toasts = useToasts()
 
@@ -43,10 +45,10 @@ const Toast = ({
       >
         <div className="flex pr-10">
           <div className="mr-2 flex justify-center items-center">
-            {error
-              ? <span className="icon-[ph--x-circle-bold] text-2xl text-dangerous" />
-              : <span className="icon-[ph--check-circle-bold] text-2xl text-success" />
-            }
+            {type === "success" && <span className="icon-[ph--check-circle-bold] text-2xl text-success" />}
+            {type === "info" && <span className="icon-[ph--info-bold] text-2xl text-blue-500" />}
+            {type === "warn" && <span className="icon-[ph--warning-bold] text-2xl text-warn" />}
+            {type === "error" && <span className="icon-[ph--x-circle-bold] text-2xl text-dangerous" />}
           </div>
           <p className="grow">{label}</p>
         </div>

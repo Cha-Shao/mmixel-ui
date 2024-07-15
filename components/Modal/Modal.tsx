@@ -10,6 +10,7 @@ export interface ModalProps extends PropsWithChildren {
   title: string
   open: boolean
   onClose: () => void
+  dismissable?: boolean
 }
 
 const isClient = () => typeof window !== "undefined"
@@ -19,6 +20,7 @@ const Modal = ({
   open,
   onClose,
   children,
+  dismissable = true
 }: ModalProps) => {
   const dismissRef = useRef<HTMLDivElement>(null)
 
@@ -34,7 +36,7 @@ const Modal = ({
               exit={{ opacity: 0 }}
               className="fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-50 dark:bg-opacity-80 flex justify-center items-center z-30"
               onClick={e =>
-                e.target === dismissRef.current && onClose()
+                e.target === dismissRef.current && dismissable && onClose()
               }
             >
               <motion.div
