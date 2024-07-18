@@ -87,7 +87,7 @@ const Dropdown = ({
               animate={{ opacity: 1, y: 8 }}
               exit={{ opacity: 0, y: 0 }}
               className={classNames(
-                "absolute z-10",
+                "absolute z-30",
                 attrs.className
               )}
               style={{
