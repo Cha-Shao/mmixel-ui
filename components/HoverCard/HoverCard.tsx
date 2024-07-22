@@ -1,6 +1,6 @@
 "use client"
 
-import { cloneElement, MouseEvent, useEffect, useRef, useState } from "react"
+import { cloneElement, ForwardedRef, forwardRef, MouseEvent, useEffect, useImperativeHandle, useRef, useState } from "react"
 import { AnimatePresence, HTMLMotionProps, motion } from "framer-motion"
 import { createPortal } from "react-dom"
 import classNames from "classnames"
@@ -14,6 +14,8 @@ export interface HoverCardProps extends HTMLMotionProps<"div"> {
   topOffset?: number
   leftOffset?: number
   disabled?: boolean
+  onShow?: () => void
+  onHide?: () => void
 }
 
 const HoverCard = ({
@@ -24,13 +26,19 @@ const HoverCard = ({
   topOffset = 0,
   leftOffset = 0,
   disabled,
+  onShow,
+  onHide,
   ...attrs
-}: HoverCardProps) => {
+}: HoverCardProps,
+  ref: ForwardedRef<HTMLElement>
+) => {
   const isClient = useIsClient()
   const triggerRef = useRef<HTMLDivElement>(null)
   const hoverCardRef = useRef<HTMLDivElement>(null)
   const openTimer = useRef<NodeJS.Timeout | null>(null)
   const [show, setShow] = useState<boolean>(false)
+
+  useImperativeHandle(ref, () => triggerRef.current as HTMLDivElement)
 
   const [position, setPosition] = useState<{ top: number, left: number }>({ top: 0, left: 0 })
 
@@ -44,6 +52,7 @@ const HoverCard = ({
     }
     openTimer.current = setTimeout(() => {
       setShow(true)
+      onShow && onShow()
     }, openDelay)
   }
   const handleClose = (e: MouseEvent) => {
@@ -54,6 +63,7 @@ const HoverCard = ({
     }
     openTimer.current = setTimeout(() => {
       setShow(false)
+      onHide && onHide()
     }, closeDelay)
   }
 
@@ -131,4 +141,4 @@ const HoverCard = ({
   </>)
 }
 
-export default HoverCard
+export default forwardRef(HoverCard)
