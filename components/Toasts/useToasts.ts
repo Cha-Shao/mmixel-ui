@@ -3,7 +3,7 @@ import { ToastContext } from "./ToastProvider"
 import { ToastType } from "./Toast"
 
 const useToasts = () => {
-  const setToasts = useContext(ToastContext).setToasts
+  const { setToasts } = useContext(ToastContext)
 
   const create = (
     label: string,
