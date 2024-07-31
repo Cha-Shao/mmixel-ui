@@ -7,6 +7,7 @@ import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
 import rehypeHighlight from "rehype-highlight"
 import { Details } from "../Details"
+import ImageMarkdown from "./ImageMarkdown"
 
 export interface MarkdownProps extends HTMLAttributes<HTMLDivElement> {
   children: string
@@ -52,9 +53,13 @@ const Markdown = (attrs: MarkdownProps) => {
         components={{
           img({ src, alt }) {
             return src ? (
-              <Image src={src} alt={alt || ""}
-                width={1280} height={720}
-                className="rounded-lg my-2 border border-border" />
+              <ImageMarkdown
+                src={src}
+                alt={alt || ""}
+                width={1920}
+                height={1080}
+                className="rounded-lg my-2 border border-border"
+              />
             ) : null
           },
           a({ href, children }) {
