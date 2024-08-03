@@ -68,7 +68,7 @@ const Dropdown = ({
     }
   }, [open])
 
-  return isClient && (<>
+  return (<>
     {cloneElement(
       trigger,
       {
@@ -76,7 +76,7 @@ const Dropdown = ({
         ref: triggerRef,
       }
     )}
-    {createPortal(
+    {isClient && createPortal(
       (
         <AnimatePresence>
           {open && (

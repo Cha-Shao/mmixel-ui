@@ -6,6 +6,7 @@ import { ForwardedRef, forwardRef, useImperativeHandle, useRef, useState } from 
 import { createPortal } from "react-dom"
 import { Button } from "../Button"
 import classNames from "classnames"
+import useIsClient from "../../utils/isClient"
 
 export interface ImagePreviewProps extends ImageProps {
   previewWidth?: number
@@ -22,6 +23,7 @@ const ImagePreview = (
   }: ImagePreviewProps,
   ref: ForwardedRef<HTMLImageElement>
 ) => {
+  const isClient = useIsClient()
   const imageRef = useRef<HTMLImageElement>(null)
 
   useImperativeHandle(ref, () => imageRef.current as HTMLImageElement)
@@ -41,7 +43,7 @@ const ImagePreview = (
         props.onClick?.(e)
       }}
     />
-    {createPortal((
+    {isClient && createPortal((
       <AnimatePresence>
         {show && (
           <motion.div

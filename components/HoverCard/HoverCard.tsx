@@ -89,7 +89,7 @@ const HoverCard = ({
     }
   }, [show])
 
-  return isClient && (<>
+  return (<>
     {cloneElement(
       trigger,
       {
@@ -105,7 +105,7 @@ const HoverCard = ({
         ref: triggerRef,
       }
     )}
-    {createPortal(
+    {isClient && createPortal(
       (
         <AnimatePresence>
           {show && (
