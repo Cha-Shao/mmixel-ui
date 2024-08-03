@@ -54,9 +54,9 @@ const Markdown = (attrs: MarkdownProps) => {
             return src ? (
               <Image
                 src={
-                  src.startsWith('https://resources.mmixel.com')
+                  src.startsWith("https://resources.mmixel.com")
                     ? src
-                    : '/default_image.jpg'
+                    : "/default_image.jpg"
                 }
                 alt={alt || ""}
                 width={1920}

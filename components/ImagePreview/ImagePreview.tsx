@@ -51,10 +51,10 @@ const ImagePreview = (
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className={classNames(
-              'fixed inset-0',
-              'flex justify-center items-center',
-              'bg-black bg-opacity-50',
-              'z-10',
+              "fixed inset-0",
+              "flex justify-center items-center",
+              "bg-black bg-opacity-50",
+              "z-10",
             )}
             onClick={() => {
               setShow(false)
@@ -73,10 +73,10 @@ const ImagePreview = (
             />
             <Image
               src={props.src}
-              alt={props.alt}
+              alt={props.alt || ""}
               width={previewWidth}
               height={previewHeight}
-              className="max-w-[80vw] cursor-zoom-out"
+              className="max-w-[80vw] max-h-[80vh] object-contain cursor-zoom-out"
             />
           </motion.div>
         )}

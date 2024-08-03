@@ -1,8 +1,8 @@
-import ImagePreview from './ImagePreview'
+import ImagePreview from "./ImagePreview"
 
 export type {
   ImagePreviewProps
-} from './ImagePreview'
+} from "./ImagePreview"
 
 export {
   ImagePreview
