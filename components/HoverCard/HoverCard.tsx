@@ -96,11 +96,11 @@ const HoverCard = ({
         ...trigger.props,
         onMouseEnter: (e: MouseEvent<HTMLElement>) => {
           handleOpen(e)
-          trigger.props.onMouseEnter && trigger.props.onMouseEnter(e)
+          trigger.props.onMouseEnter?.(e)
         },
         onMouseLeave: (e: MouseEvent<HTMLElement>) => {
           handleClose(e)
-          trigger.props.onMouseLeave && trigger.props.onMouseLeave(e)
+          trigger.props.onMouseLeave?.(e)
         },
         ref: triggerRef,
       }
