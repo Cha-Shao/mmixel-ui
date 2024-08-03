@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion"
 import Image, { ImageProps } from "next/image"
-import { ForwardedRef, forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react"
+import { ForwardedRef, forwardRef, useImperativeHandle, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { Button } from "../Button"
 import classNames from "classnames"
@@ -23,32 +23,10 @@ const ImagePreview = (
   ref: ForwardedRef<HTMLImageElement>
 ) => {
   const imageRef = useRef<HTMLImageElement>(null)
-  const [position, setPosition] = useState<{ x: number, y: number }>({
-    x: 0,
-    y: 0,
-  })
-  const [size, setSize] = useState<{ w: number, h: number }>({
-    w: 0,
-    h: 0,
-  })
 
   useImperativeHandle(ref, () => imageRef.current as HTMLImageElement)
 
   const [show, setShow] = useState<boolean>(false)
-
-  useEffect(() => {
-    setPosition({
-      x: imageRef.current?.getBoundingClientRect().left || 0,
-      y: imageRef.current?.getBoundingClientRect().top || 0,
-    })
-    setSize({
-      w: imageRef.current?.getBoundingClientRect().width || 0,
-      h: imageRef.current?.getBoundingClientRect().height || 0,
-    })
-    show
-      ? document.body.classList.add('no-scroll')
-      : document.body.classList.remove('no-scroll')
-  }, [show])
 
   return (<>
     <Image
