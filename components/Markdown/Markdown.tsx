@@ -7,6 +7,7 @@ import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
 import rehypeHighlight from "rehype-highlight"
 import { Details } from "../Details"
+import { ImagePreview } from "../ImagePreview"
 
 export interface MarkdownProps extends HTMLAttributes<HTMLDivElement> {
   children: string
@@ -52,7 +53,7 @@ const Markdown = (attrs: MarkdownProps) => {
         components={{
           img({ src, alt }) {
             return src ? (
-              <Image
+              <ImagePreview
                 src={
                   src.startsWith("https://resources.mmixel.com")
                     ? src
