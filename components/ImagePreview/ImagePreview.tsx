@@ -34,6 +34,8 @@ const ImagePreview = (
     <Image
       ref={imageRef}
       {...props}
+      src={props.src}
+      alt={props.alt || ""}
       className={classNames(
         props.className,
         "cursor-pointer",

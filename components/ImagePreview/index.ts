@@ -1,9 +1,9 @@
 import ImagePreview from "./ImagePreview"
 
 export type {
-  ImagePreviewProps
+  ImagePreviewProps,
 } from "./ImagePreview"
 
 export {
-  ImagePreview
+  ImagePreview,
 }
