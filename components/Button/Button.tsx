@@ -1,14 +1,14 @@
 "use client"
 
 import classNames from "classnames"
-import { ForwardedRef, forwardRef, HTMLAttributes } from "react"
+import { ButtonHTMLAttributes, ForwardedRef, forwardRef } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
 export type ButtonSize = "ty" | "sm" | "md" | "lg"
 
 export type ButtonVariant = "solid" | "primary" | "muted" | "ghost" | "link" | "border"
 
-export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
   size?: ButtonSize
   iconOnly?: boolean
