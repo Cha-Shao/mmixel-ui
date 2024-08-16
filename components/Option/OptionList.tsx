@@ -1,14 +1,14 @@
 import classNames from "classnames"
 import { HTMLAttributes } from "react"
 
-export interface FormListProps extends HTMLAttributes<HTMLDivElement> {
+export interface OptionListProps extends HTMLAttributes<HTMLDivElement> {
 
 }
 
-const FormList = ({
+const OptionList = ({
   children,
   ...attrs
-}: FormListProps) => {
+}: OptionListProps) => {
   return (
     <div
       {...attrs}
@@ -22,4 +22,4 @@ const FormList = ({
   )
 }
 
-export default FormList
+export default OptionList
