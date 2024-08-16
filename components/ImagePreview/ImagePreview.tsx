@@ -19,7 +19,7 @@ const ImagePreview = (
   {
     previewWidth = 1920,
     previewHeight = 1080,
-    ...props
+    ...attrs
   }: ImagePreviewProps,
   ref: ForwardedRef<HTMLImageElement>
 ) => {
@@ -33,16 +33,16 @@ const ImagePreview = (
   return (<>
     <Image
       ref={imageRef}
-      {...props}
-      src={props.src}
-      alt={props.alt || ""}
+      {...attrs}
+      src={attrs.src}
+      alt={attrs.alt || ""}
       className={classNames(
-        props.className,
+        attrs.className,
         "cursor-pointer",
       )}
       onClick={e => {
         setShow(true)
-        props.onClick?.(e)
+        attrs.onClick?.(e)
       }}
     />
     {isClient && createPortal((
@@ -60,7 +60,7 @@ const ImagePreview = (
             )}
             onClick={() => {
               setShow(false)
-              props.onClose?.()
+              attrs.onClose?.()
             }}
           >
             <Button
@@ -70,12 +70,12 @@ const ImagePreview = (
               className="absolute top-4 right-4 text-white"
               onClick={() => {
                 setShow(false)
-                props.onClose?.()
+                attrs.onClose?.()
               }}
             />
             <Image
-              src={props.src}
-              alt={props.alt || ""}
+              src={attrs.src}
+              alt={attrs.alt || ""}
               width={previewWidth}
               height={previewHeight}
               className="max-w-[80vw] max-h-[80vh] object-contain cursor-zoom-out"

@@ -26,6 +26,7 @@ const Textarea = ({
         "min-h-[6ch]",
         attrs.className
       )}
+      value={attrs.value}
       onChange={e => onChange && onChange(e.target.value)}
     />
   )
