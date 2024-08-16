@@ -46,7 +46,7 @@ const Modal = ({
               >
                 <Card
                   title={title}
-                  className="max-w-lg min-w-96 w-full relative"
+                  className="max-w-[80vw] min-w-96 w-full relative"
                 >
                   <Button
                     variant="ghost"
