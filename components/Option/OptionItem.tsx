@@ -3,19 +3,19 @@
 import classNames from "classnames"
 import { HTMLAttributes } from "react"
 
-export interface FormItemProps extends HTMLAttributes<HTMLLabelElement> {
+export interface OptionItemProps extends HTMLAttributes<HTMLLabelElement> {
   label: string
   required?: boolean
   htmlFor?: string
 }
 
-const FormItem = ({
+const OptionItem = ({
   label,
   required,
   htmlFor,
   children,
   ...attrs
-}: FormItemProps) => {
+}: OptionItemProps) => {
   return (<>
     <label
       {...attrs}
@@ -32,4 +32,4 @@ const FormItem = ({
   </>)
 }
 
-export default FormItem
+export default OptionItem
