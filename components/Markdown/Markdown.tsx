@@ -1,5 +1,4 @@
 import classNames from "classnames"
-import Image from "next/image"
 import Link from "next/link"
 import { HTMLAttributes } from "react"
 import ReactMarkdown from "react-markdown"
@@ -48,8 +47,13 @@ const Markdown = (attrs: MarkdownProps) => {
       )}
     >
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw, rehypeHighlight]}
+        remarkPlugins={[
+          remarkGfm,
+        ]}
+        rehypePlugins={[
+          rehypeRaw,
+          rehypeHighlight
+        ]}
         components={{
           img({ src, alt }) {
             return src ? (
@@ -68,7 +72,7 @@ const Markdown = (attrs: MarkdownProps) => {
           },
           a({ href, children }) {
             return href
-              ? <Link href={href} target="_blank">{children}</Link>
+              ? <Link href={`/extra?url=${href}`} target="_blank">{children}</Link>
               : null
           },
           details({ children }) {
@@ -76,6 +80,14 @@ const Markdown = (attrs: MarkdownProps) => {
           },
           summary() { return null },
           iframe() { return null },
+
+          h1(props) {
+            return (
+              <h1 id={encodeURI(props.children as string).toLowerCase()}>
+                {props.children}
+              </h1>
+            )
+          },
         }}
       >
         {content}

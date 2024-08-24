@@ -83,7 +83,8 @@ const ImagePreview = (
           </motion.div>
         )}
       </AnimatePresence>
-    ), document.body
+    ),
+      document.body
     )}
   </>)
 }
