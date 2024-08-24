@@ -28,15 +28,18 @@ const ToastProvider = ({
       toasts,
       setToasts,
     }}>
-      <div className="fixed top-16 right-0 z-50 max-w-96 grid gap-2 p-2">
-        <AnimatePresence>
-          {toasts.map(toast => (
-            <Toast
-              key={toast.id}
-              {...toast}
-            />
-          ))}
-        </AnimatePresence>
+      <div className="fixed top-16 right-0 z-50 max-w-96 p-2">
+        <ul>
+          <AnimatePresence>
+            {toasts.map(toast => (
+              <li key={toast.id} className="mb-2">
+                <Toast
+                  {...toast}
+                />
+              </li>
+            ))}
+          </AnimatePresence>
+        </ul>
       </div>
       {children}
     </ToastContext.Provider>

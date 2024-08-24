@@ -42,21 +42,24 @@ const Pagination = ({
           <span className="icon-[ph--dots-three-bold] text-xl mx-2" />
         )}>
           <Card border className="!p-2 shadow">
-            <div className="grid max-h-64 overflow-y-auto">
-              {[...Array(page - 1 - 3)].map((_, i) => {
-                const currentPage = i + 2
+            <div className="max-h-64 overflow-y-auto">
+              <ul>
+                {[...Array(page - 1 - 3)].map((_, i) => {
+                  const currentPage = i + 2
 
-                return (
-                  <Button
-                    key={currentPage}
-                    variant='ghost'
-                    className="justify-center"
-                    onClick={() => onChange(currentPage)}
-                  >
-                    {currentPage}
-                  </Button>
-                )
-              })}
+                  return (
+                    <li key={currentPage}>
+                      <Button
+                        variant='ghost'
+                        className="w-full justify-center"
+                        onClick={() => onChange(currentPage)}
+                      >
+                        {currentPage}
+                      </Button>
+                    </li>
+                  )
+                })}
+              </ul>
             </div>
           </Card>
         </HoverCard>
@@ -96,21 +99,24 @@ const Pagination = ({
           <span className="icon-[ph--dots-three-bold] text-xl mx-2" />
         )}>
           <Card border className="!p-2 shadow">
-            <div className="grid max-h-64 overflow-y-auto">
-              {[...Array(total - page - 3)].map((_, i) => {
-                const currentPage = page + 2 + (i + 1)
+            <div className="max-h-64 overflow-y-auto">
+              <ul>
+                {[...Array(total - page - 3)].map((_, i) => {
+                  const currentPage = page + 2 + (i + 1)
 
-                return (
-                  <Button
-                    key={currentPage}
-                    variant='ghost'
-                    className="justify-center"
-                    onClick={() => onChange(currentPage)}
-                  >
-                    {currentPage}
-                  </Button>
-                )
-              })}
+                  return (
+                    <li key={currentPage}>
+                      <Button
+                        variant='ghost'
+                        className="justify-center"
+                        onClick={() => onChange(currentPage)}
+                      >
+                        {currentPage}
+                      </Button>
+                    </li>
+                  )
+                })}
+              </ul>
             </div>
           </Card>
         </HoverCard>
