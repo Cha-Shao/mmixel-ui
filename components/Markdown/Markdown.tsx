@@ -52,7 +52,7 @@ const Markdown = (attrs: MarkdownProps) => {
         ]}
         rehypePlugins={[
           rehypeRaw,
-          rehypeHighlight
+          rehypeHighlight,
         ]}
         components={{
           img({ src, alt }) {
