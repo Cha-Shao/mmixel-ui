@@ -61,7 +61,7 @@ const Markdown = (attrs: MarkdownProps) => {
                 src={
                   src.startsWith("https://resources.mmixel.com")
                     ? src
-                    : "/default_image.jpg"
+                    : "/default_image.png"
                 }
                 alt={alt || ""}
                 width={1920}
@@ -72,7 +72,11 @@ const Markdown = (attrs: MarkdownProps) => {
           },
           a({ href, children }) {
             return href
-              ? <Link href={`/extra?url=${href}`} target="_blank">{children}</Link>
+              ? <Link href={
+                (href.startsWith("/") && !href.startsWith("//"))
+                  ? href
+                  : `/extra?url=${href}`
+              } target="_blank">{children}</Link>
               : null
           },
           details({ children }) {
