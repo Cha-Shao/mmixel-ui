@@ -35,9 +35,8 @@ const Dropdown = ({
         e.target === triggerRef.current
         || triggerRef.current?.contains(e.target as Node)
         || (() => keepOpen && dropdownRef.current?.contains(e.target as Node))()
-      ) setOpen(true)
+      ) setOpen(!open)
       else setOpen(false)
-
     }
 
     addEventListener("click", handleDrop)
