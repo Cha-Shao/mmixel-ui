@@ -2,6 +2,6 @@ import Tag from "./Tag"
 
 export type {
   TagProps,
-} from './Tag'
+} from "./Tag"
 
 export { Tag }
