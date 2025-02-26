@@ -16,11 +16,7 @@ export interface ImagePreviewProps extends ImageProps {
 }
 
 const ImagePreview = (
-  {
-    previewWidth = 1920,
-    previewHeight = 1080,
-    ...attrs
-  }: ImagePreviewProps,
+  props: ImagePreviewProps,
   ref: ForwardedRef<HTMLImageElement>
 ) => {
   const isClient = useIsClient()
@@ -32,17 +28,17 @@ const ImagePreview = (
 
   return (<>
     <Image
+      {...props}
       ref={imageRef}
-      {...attrs}
-      src={attrs.src}
-      alt={attrs.alt || ""}
+      src={props.src}
+      alt={props.alt || ""}
       className={classNames(
-        attrs.className,
+        props.className,
         "cursor-pointer",
       )}
       onClick={e => {
         setShow(true)
-        attrs.onClick?.(e)
+        props.onClick?.(e)
       }}
     />
     {isClient && createPortal((
@@ -60,7 +56,7 @@ const ImagePreview = (
             )}
             onClick={() => {
               setShow(false)
-              attrs.onClose?.()
+              props.onClose?.()
             }}
           >
             <Button
@@ -70,14 +66,14 @@ const ImagePreview = (
               className="absolute top-4 right-4 text-white"
               onClick={() => {
                 setShow(false)
-                attrs.onClose?.()
+                props.onClose?.()
               }}
             />
             <Image
-              src={attrs.src}
-              alt={attrs.alt || ""}
-              width={previewWidth}
-              height={previewHeight}
+              src={props.src}
+              alt={props.alt || ""}
+              width={props.width}
+              height={props.height}
               className="max-w-[80vw] max-h-[80vh] object-contain cursor-zoom-out"
             />
           </motion.div>
