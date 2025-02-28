@@ -72,11 +72,7 @@ const Markdown = (attrs: MarkdownProps) => {
           },
           a({ href, children }) {
             return href
-              ? <Link href={
-                (href.startsWith("/") && !href.startsWith("//"))
-                  ? href
-                  : `/extra?url=${href}`
-              } target="_blank">{children}</Link>
+              ? <Link href={`/extra?url=${href}`} target="_blank">{children}</Link>
               : null
           },
           details({ children }) {
