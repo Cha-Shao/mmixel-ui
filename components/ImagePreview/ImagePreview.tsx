@@ -75,6 +75,9 @@ const ImagePreview = (
               width={props.width}
               height={props.height}
               className="max-w-[80vw] max-h-[80vh] object-contain cursor-zoom-out"
+              onError={e => {
+                e.currentTarget.src = "/default_image.png"
+              }}
             />
           </motion.div>
         )}

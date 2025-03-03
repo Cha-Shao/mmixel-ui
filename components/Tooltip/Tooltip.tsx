@@ -96,7 +96,7 @@ const Tooltip = ({
               initial={{ opacity: 0, y: 0 }}
               animate={{ opacity: 1, y: 8 }}
               exit={{ opacity: 0, y: 0 }}
-              className="absolute z-10 px-1.5 py-0.5 rounded-full bg-black text-white text-xs whitespace-nowrap"
+              className="absolute z-40 px-1.5 py-0.5 rounded-full bg-black text-white text-xs whitespace-nowrap"
               style={styles}
             >
               {label}

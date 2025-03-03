@@ -13,7 +13,7 @@ const OptionList = ({
     <div
       {...attrs}
       className={classNames(
-        "grid grid-cols-[8rem_1fr] gap-x-2 gap-y-4 place-content-start",
+        "grid grid-cols-[auto_1fr] gap-x-2 gap-y-4 place-content-start",
         attrs.className
       )}
     >
