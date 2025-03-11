@@ -18,9 +18,7 @@ export const ToastContext = createContext<{
   setToasts: () => { },
 })
 
-const ToastProvider = ({
-  children,
-}: PropsWithChildren) => {
+const ToastProvider = ({ children, }: PropsWithChildren) => {
   const [toasts, setToasts] = useState<ToastProps[]>([])
 
   return (
