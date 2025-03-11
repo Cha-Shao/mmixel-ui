@@ -1,14 +1,14 @@
 "use client"
 
-import { cloneElement, ForwardedRef, forwardRef, MouseEvent, useEffect, useImperativeHandle, useRef, useState } from "react"
+import { cloneElement, ForwardedRef, forwardRef, MouseEvent, ReactElement, ReactNode, useEffect, useImperativeHandle, useRef, useState } from "react"
 import { AnimatePresence, HTMLMotionProps, motion } from "framer-motion"
 import { createPortal } from "react-dom"
 import classNames from "classnames"
 import useIsClient from "../../utils/isClient"
 
 export interface HoverCardProps extends HTMLMotionProps<"div"> {
-  trigger: React.ReactElement
-  children: React.ReactNode
+  trigger: ReactElement
+  children: ReactNode
   openDelay?: number
   closeDelay?: number
   topOffset?: number
