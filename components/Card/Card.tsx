@@ -27,7 +27,7 @@ const Card = ({
       {...attrs}
       ref={ref}
       className={classNames(
-        border ? "border border-border" : "",
+        border ? "simple-border" : "",
         "rounded-2xl p-6",
         deep ? "bg-background" : "bg-foreground",
         attrs.className

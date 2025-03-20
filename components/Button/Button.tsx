@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion"
 
 export type ButtonSize = "ty" | "sm" | "md" | "lg"
 
-export type ButtonVariant = "solid" | "primary" | "muted" | "ghost" | "link" | "border"
+export type ButtonVariant = "solid" | "primary" | "muted" | "ghost" | "link" | "border" | "dangerous"
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
@@ -41,7 +41,8 @@ const Button = (
         variant === "primary" && "bg-primary text-white",
         variant === "muted" && "bg-muted",
         variant === "ghost" && "hover:bg-muted",
-        variant === "border" && "border border-border hover:bg-muted",
+        variant === "border" && "simple-border hover:bg-muted",
+        variant === "dangerous" && "bg-dangerous text-foreground",
         size === "ty" && `p-1 ${!iconOnly && "px-2"} text-xs`,
         size === "sm" && `p-1.5 ${!iconOnly && "px-3"} text-sm`,
         size === "md" && `p-2 ${!iconOnly && "px-4"} text-base`,

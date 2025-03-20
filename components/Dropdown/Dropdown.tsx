@@ -34,8 +34,11 @@ const Dropdown = ({
       if (
         e.target === triggerRef.current
         || triggerRef.current?.contains(e.target as Node)
-        || (() => keepOpen && dropdownRef.current?.contains(e.target as Node))()
-      ) setOpen(!open)
+        || (() => dropdownRef.current?.contains(e.target as Node))()
+      ) {
+        if (keepOpen && !open === false) return
+        setOpen(!open)
+      }
       else setOpen(false)
     }
 
