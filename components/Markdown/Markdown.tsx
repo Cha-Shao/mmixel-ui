@@ -14,7 +14,7 @@ export interface MarkdownProps extends ReactMarkdownOptions {
 }
 
 const Markdown = ({
-  defaultImage = '/default_image.png',
+  defaultImage = "/default_image.png",
   ...attrs
 }: MarkdownProps) => {
   return (
@@ -41,7 +41,7 @@ const Markdown = ({
                 alt={props.alt || ""}
                 width={1920}
                 height={1080}
-                className="rounded-lg my-2 border border-border"
+                className="rounded-lg my-2 simple-border"
               />
               {props.alt && <p className="text-center text-sm text-tip">{props.alt}</p>}
             </div>
@@ -60,8 +60,8 @@ const Markdown = ({
         h1(props) {
           return (
             <h1
-              id={typeof props.children === 'string' ? encodeURI((props.children as string).match(/(?<=#)$$(.*?)$$/g)?.[0] || "").toLowerCase() : void 0}
-              className={classNames(props.className, 'scroll-mt-16')}
+              id={typeof props.children === "string" ? encodeURI((props.children as string).match(/(?<=#)$$(.*?)$$/g)?.[0] || "").toLowerCase() : void 0}
+              className={classNames(props.className, "scroll-mt-16")}
             >
               {props.children}
             </h1>
@@ -70,8 +70,8 @@ const Markdown = ({
         h2(props) {
           return (
             <h2
-              id={typeof props.children === 'string' ? encodeURI((props.children as string).match(/(?<=#)$$(.*?)$$/g)?.[0] || "").toLowerCase() : void 0}
-              className={classNames(props.className, 'scroll-mt-16')}
+              id={typeof props.children === "string" ? encodeURI((props.children as string).match(/(?<=#)$$(.*?)$$/g)?.[0] || "").toLowerCase() : void 0}
+              className={classNames(props.className, "scroll-mt-16")}
             >
               {props.children}
             </h2>
@@ -80,8 +80,8 @@ const Markdown = ({
         h3(props) {
           return (
             <h3
-              id={typeof props.children === 'string' ? encodeURI((props.children as string).match(/(?<=#)$$(.*?)$$/g)?.[0] || "").toLowerCase() : void 0}
-              className={classNames(props.className, 'scroll-mt-16')}
+              id={typeof props.children === "string" ? encodeURI((props.children as string).match(/(?<=#)$$(.*?)$$/g)?.[0] || "").toLowerCase() : void 0}
+              className={classNames(props.className, "scroll-mt-16")}
             >
               {props.children}
             </h3>
@@ -90,8 +90,8 @@ const Markdown = ({
         h4(props) {
           return (
             <h4
-              id={typeof props.children === 'string' ? encodeURI((props.children as string).match(/(?<=#)$$(.*?)$$/g)?.[0] || "").toLowerCase() : void 0}
-              className={classNames(props.className, 'scroll-mt-16')}
+              id={typeof props.children === "string" ? encodeURI((props.children as string).match(/(?<=#)$$(.*?)$$/g)?.[0] || "").toLowerCase() : void 0}
+              className={classNames(props.className, "scroll-mt-16")}
             >
               {props.children}
             </h4>
@@ -100,8 +100,8 @@ const Markdown = ({
         h5(props) {
           return (
             <h5
-              id={typeof props.children === 'string' ? encodeURI((props.children as string).match(/(?<=#)$$(.*?)$$/g)?.[0] || "").toLowerCase() : void 0}
-              className={classNames(props.className, 'scroll-mt-16')}
+              id={typeof props.children === "string" ? encodeURI((props.children as string).match(/(?<=#)$$(.*?)$$/g)?.[0] || "").toLowerCase() : void 0}
+              className={classNames(props.className, "scroll-mt-16")}
             >
               {props.children}
             </h5>
@@ -110,8 +110,8 @@ const Markdown = ({
         h6(props) {
           return (
             <h6
-              id={typeof props.children === 'string' ? encodeURI((props.children as string).match(/(?<=#)$$(.*?)$$/g)?.[0] || "").toLowerCase() : void 0}
-              className={classNames(props.className, 'scroll-mt-16')}
+              id={typeof props.children === "string" ? encodeURI((props.children as string).match(/(?<=#)$$(.*?)$$/g)?.[0] || "").toLowerCase() : void 0}
+              className={classNames(props.className, "scroll-mt-16")}
             >
               {props.children}
             </h6>
