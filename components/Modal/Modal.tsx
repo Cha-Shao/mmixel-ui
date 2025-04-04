@@ -1,7 +1,7 @@
 "use client"
 
 import { AnimatePresence, motion } from "framer-motion"
-import { PropsWithChildren, useRef } from "react"
+import { PropsWithChildren } from "react"
 import { createPortal } from "react-dom"
 import { Card } from "../Card"
 import { Button } from "../Button"
@@ -22,7 +22,6 @@ const Modal = ({
   children,
   dismissable = true,
 }: ModalProps) => {
-  const dismissRef = useRef<HTMLDivElement>(null)
 
   return isClient() &&
     createPortal(
@@ -30,13 +29,12 @@ const Modal = ({
         <AnimatePresence>
           {open && (
             <motion.div
-              ref={dismissRef}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-50 dark:bg-opacity-80 flex justify-center items-center z-30"
               onClick={e =>
-                e.target === dismissRef.current && dismissable && onClose()
+                e.target === e.currentTarget && dismissable && onClose()
               }
             >
               <motion.div
