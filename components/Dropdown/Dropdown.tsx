@@ -23,7 +23,7 @@ const Dropdown = ({
   ...attrs
 }: DropdownProps) => {
   const isClient = useIsClient()
-  const triggerRef = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLElement>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const [open, setOpen] = useState<boolean>(false)
 
