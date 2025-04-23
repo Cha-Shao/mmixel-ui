@@ -27,7 +27,7 @@ const Input = ({
         rounded ? "rounded-full" : "rounded-lg",
         "border duration-200",
         attrs.disabled
-          ? "bg-muted cursor-no-drop"
+          ? "bg-muted text-tip cursor-no-drop"
           : errMessage
             ? "border-dangerous bg-dangerous bg-opacity-20 placeholder:text-dangerous"
             : "border-border focus:border-primary bg-transparent",
