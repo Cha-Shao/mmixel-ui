@@ -23,11 +23,11 @@ const Toast = ({
 }: ToastProps) => {
   const toasts = useToasts()
 
-  // 10秒自动关闭
+  // 7秒自动关闭
   useEffect(() => {
     const timer = setTimeout(() => {
       toasts.remove(id)
-    }, 1e4)
+    }, 7e3)
 
     return () => clearTimeout(timer)
   }, [id, toasts])
