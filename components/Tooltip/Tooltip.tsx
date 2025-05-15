@@ -5,6 +5,8 @@ import { cloneElement, ForwardedRef, forwardRef, ReactElement, useEffect, useImp
 import { AnimatePresence, motion } from "framer-motion"
 import { createPortal } from "react-dom"
 
+const SPACE = 8
+
 export interface TooltipProps {
   label: string
   placement?: "top" | "right" | "bottom" | "left"
@@ -53,26 +55,26 @@ const Tooltip = ({
       switch (placement) {
         case "top":
           setStyles({
-            top: top - tooltipHeight + scrollY,
+            top: top - tooltipHeight - SPACE + scrollY,
             left: left + scrollX + width / 2 - tooltipWidth / 2,
           })
           break
         case "right":
           setStyles({
             top: top + height / 2 - tooltipHeight / 2 + scrollY,
-            left: left + scrollX + width,
+            left: left + scrollX + width + SPACE,
           })
           break
         case "bottom":
           setStyles({
-            top: top + height + scrollY,
+            top: top + height + SPACE + scrollY,
             left: left + scrollX + width / 2 - tooltipWidth / 2,
           })
           break
         case "left":
           setStyles({
             top: top + height / 2 - tooltipHeight / 2 + scrollY,
-            left: left + scrollX - tooltipWidth,
+            left: left + scrollX - tooltipWidth - SPACE,
           })
           break
       }
