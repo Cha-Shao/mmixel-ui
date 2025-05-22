@@ -36,7 +36,7 @@ const Switch = ({
         onClick={() => inputRef.current?.click()}
         className={classNames(
           "relative w-11 h-6 after:content-['']",
-          "rounded-full",
+          "rounded-full cursor-pointer",
           "peer bg-muted peer-checked:bg-primary",
           "peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary ring-offset-2",
           "peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-foreground",
