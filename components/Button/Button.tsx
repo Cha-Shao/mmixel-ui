@@ -38,22 +38,36 @@ const Button = (
       disabled={disabled || loading}
       className={classNames(
         "inline-flex items-center duration-200",
-        variant === "primary" && "bg-primary text-white",
-        variant === "muted" && "bg-muted",
-        variant === "ghost" && "hover:bg-muted",
-        variant === "border" && "simple-border hover:bg-muted",
-        variant === "dangerous" && "bg-dangerous text-foreground",
-        size === "ty" && `p-1 ${!iconOnly && "px-2"} text-xs`,
-        size === "sm" && `p-1.5 ${!iconOnly && "px-3"} text-sm`,
-        size === "md" && `p-2 ${!iconOnly && "px-4"} text-base`,
-        size === "lg" && `p-3 ${!iconOnly && "px-6"} text-lg`,
+        {
+          "bg-primary text-white": variant === "primary",
+          "bg-muted": variant === "muted",
+          "hover:bg-muted": variant === "ghost",
+          "border border-border hover:bg-muted": variant === "border",
+          "bg-dangerous text-foreground": variant === "dangerous",
+        },
+        // 只在variant不是link时应用padding，text大小始终生效
+        {
+          "text-xs": size === "ty",
+          "text-sm": size === "sm",
+          "text-base": size === "md",
+          "text-lg": size === "lg",
+
+          "p-1": size === "ty" && variant !== "link",
+          "px-2": size === "ty" && variant !== "link" && !iconOnly,
+
+          "p-1.5": size === "sm" && variant !== "link",
+          "px-3": size === "sm" && variant !== "link" && !iconOnly,
+
+          "p-2": size === "md" && variant !== "link",
+          "px-4": size === "md" && variant !== "link" && !iconOnly,
+
+          "p-3": size === "lg" && variant !== "link",
+          "px-6": size === "lg" && variant !== "link" && !iconOnly,
+        },
         rounded ? "rounded-full" : "rounded-lg",
         (disabled || loading)
           ? "opacity-50 cursor-not-allowed"
-          : classNames(
-            "hover:brightness-110 active:scale-95 active:brightness-95",
-            "duration-200"
-          ),
+          : "hover:brightness-110 active:scale-95 active:brightness-95 duration-200",
         attrs.className
       )}
     >
